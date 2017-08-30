@@ -63,7 +63,10 @@ class HomeController @Inject()(productService: ProductService) extends Controlle
 
     productService.activeProduct().flatMap { products =>
       val productBycat = productService.groupProductByCategory(products)
-      val mp1 = Json.parse(JsonUtil.toJson(Map("output" ->productBycat.map(p => p._1 -> p._2.size))))
+      //val stage3 = Json.parse(JsonUtil.toJson(Map("output" ->productBycat.map(p => p._1 -> p._2.size))))
+      val activeProducts = productBycat.map(p => p._1 -> p._2).values.flatten
+      val totalPrice = activeProducts.foldLeft(0){(i, p) => i+p.price}
+      val stage4 = Json.obj("output" -> Json.obj("totalValue" -> totalPrice))
 
       //ver-1
       //val mp = Json.toJson(productBycat.map(p => p._1 -> Json.toJson(p._2)))
@@ -74,8 +77,8 @@ class HomeController @Inject()(productService: ProductService) extends Controlle
 
       //val mp1 = Json.obj("output" -> p)
 
-      //Ok(mp)
-      productService.postResult(mp1).map{ response => Ok(response)}
+      //Ok(stage4.toString())
+      productService.postResult(stage4).map{ response => Ok(response)}
       //productService.postResult(mp).map{ response => Ok(response)}
     }
 
