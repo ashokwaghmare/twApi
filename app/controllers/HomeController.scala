@@ -75,8 +75,8 @@ class HomeController @Inject()(productService: ProductService) extends Controlle
       //val mp1 = Json.obj("output" -> p)
 
       //Ok(mp)
-      //productService.postResult(Json.obj("output" -> mp)).map{ response => Ok(response)}
       productService.postResult(mp1).map{ response => Ok(response)}
+      //productService.postResult(mp).map{ response => Ok(response)}
     }
 
   }

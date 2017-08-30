@@ -23,6 +23,7 @@ class RestClient @Inject()(ws :WSClient) {
 
     println("posting????....>>"+body)
     //val inputJson = JsObject(Seq(("output" -> Json.obj("count"->JsNumber(5)))))
+    //val inputJson = JsObject(Map("output" -> Json.obj("Kitchen"->JsNumber(1), "Furniture" -> JsNumber(1))))
 
     ws.url(url).withHeaders(headers.toSeq:_*).post(body).map{ response =>
       response.status match {

@@ -55,7 +55,7 @@ class ProductService @Inject()(restClient: RestClient) {
         println("allProducts>>"+allProducts)
 
 
-        allProducts.filter(p => DateUtil.isBetweenInclusive(p.startDate.get, p.endDate.get, LocalDate.now()))
+        allProducts.filter(p => DateUtil.isBetweenInclusive(p.startDate.get, p.endDate.get, LocalDate.parse("2017-08-25")))
 
       }
     }

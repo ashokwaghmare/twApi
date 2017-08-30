@@ -23,7 +23,6 @@ object DateUtil {
   def isBetweenInclusive(start: LocalDate, end: LocalDate, target: LocalDate): Boolean =if(!start.equals(LocalDate.parse("0000-01-01")) && !end.equals(LocalDate.parse("0000-01-01"))) target.isAfter(start) && target.isBefore(end) else target.isAfter(start) && end.equals(LocalDate.parse("0000-01-01"))
 
 
-
   def isAfter(start: LocalDate, target: LocalDate):Boolean = target.isAfter(start)
 
   def noEndDate(target: LocalDate) = target.equals(LocalDate.parse("0000-01-01"))
